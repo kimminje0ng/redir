@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>여는 중…</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px; padding: 24px;
+    font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    background: #fff; color: #111;
+  }
+  @media (prefers-color-scheme: dark) { body { background: #111; color: #eee; } }
+  h1 { font-size: 17px; font-weight: 600; margin: 0; }
+  p  { margin: 0; font-size: 13px; opacity: .65; text-align: center; }
+  a  {
+    display: block; width: 100%; max-width: 320px; box-sizing: border-box;
+    padding: 15px 18px; border-radius: 12px; text-align: center;
+    text-decoration: none; font-weight: 600;
+  }
+  .app { background: #e60012; color: #fff; }
+  .web { background: rgba(127,127,127,.18); color: inherit; font-weight: 500; }
+</style>
+</head>
+<body>
+  <h1 id="t">여는 중…</h1>
+  <a class="app" id="app" href="#">📱 앱으로 열기</a>
+  <a class="web" id="web" href="#">웹으로 열기</a>
+  <p id="hint">앱이 안 열리면 위 버튼을 눌러주세요.</p>
+<script>
+(function () {
+  var S = atob('Y2d2Oi8vdXJsPQ=='), H = atob('Y2d2LmNvLmty');
+  var u = new URLSearchParams(location.search).get('u') || '';
+  var t = document.getElementById('t'), hint = document.getElementById('hint');
+  var app = document.getElementById('app'), web = document.getElementById('web');
+  var ok = false;
+  try { var p = new URL(u); ok = p.protocol === 'https:' && p.hostname === H; } catch (e) {}
+  if (!ok) {
+    t.textContent = '주소가 없습니다';
+    hint.textContent = '';
+    app.style.display = web.style.display = 'none';
+    return;
+  }
+  var d = S + encodeURIComponent(u);
+  app.href = d;
+  web.href = u;
+  setTimeout(function () { location.href = d; }, 60);
+  setTimeout(function () { t.textContent = '예매'; }, 1500);
+})();
+</script>
+</body>
+</html>
