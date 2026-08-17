@@ -37,10 +37,7 @@
   var t = document.getElementById('t'), hint = document.getElementById('hint');
   var app = document.getElementById('app'), web = document.getElementById('web');
   var ok = false;
-  try {
-    var p = new URL(u);
-    ok = p.protocol === 'https:' && (p.hostname === H || p.hostname === location.hostname);
-  } catch (e) {}
+  try { var p = new URL(u); ok = p.protocol === 'https:' && p.hostname === H; } catch (e) {}
   if (!ok) {
     t.textContent = '주소가 없습니다';
     hint.textContent = '';
